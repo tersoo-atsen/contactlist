@@ -1,7 +1,5 @@
 # contact list
-
 ## Installation
-
 - `git clone git@github.com:tersoo-atsen/contactlist.git`
 - cd contactlist
 - npm install
