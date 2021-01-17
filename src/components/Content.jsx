@@ -21,8 +21,8 @@ const Content = ({ contacts }) => {
               <div key={idx} className={classes} onClick={() => { handleClick(person); }} aria-hidden="true">
                 <span className="name">
                   {person.name.first}
-                  {' '}
-                  {person.name.last}
+                  {', '}
+                  <span className="last">{person.name.last}</span>
                 </span>
               </div>
             );

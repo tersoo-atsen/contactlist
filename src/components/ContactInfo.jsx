@@ -11,39 +11,39 @@ const ContactInfo = (props) => {
       </div>
       <div className="contact-details">
         <h3 className="name">
-          {contact.name.first}
+          <span>{contact.name.first}</span>
           {' '}
-          {contact.name.last}
+          <span>{contact.name.last}</span>
         </h3>
         <p className="email">
-          Email:
+          <span className="bold">Email:</span>
           {' '}
           {contact.email}
         </p>
         <p className="phone">
-          Phone:
+          <span className="bold">Phone:</span>
           {' '}
           {contact.phone}
         </p>
         <p className="street">
-          Street:
+          <span className="bold">Street:</span>
           {' '}
           {contact.location.street.number}
           {' '}
           {contact.location.street.name}
         </p>
         <p className="city">
-          City:
+          <span className="bold">City:</span>
           {' '}
           {contact.location.city}
         </p>
         <p className="state">
-          State:
+          <span className="bold">State:</span>
           {' '}
           {contact.location.state}
         </p>
         <p className="postcode">
-          Postcode:
+          <span className="bold">Postcode:</span>
           {' '}
           {contact.location.postcode}
         </p>

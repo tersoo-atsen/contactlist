@@ -5,29 +5,23 @@ import './Tabs.scss';
 import Tab from './Tab';
 import Content from './Content';
 
-const Tabs = ({ children }) => {
+const Tabs = ({ children: data }) => {
   const [activeTab, setActiveTab] = useState('');
 
   const onClickTabItem = (tab) => setActiveTab(tab);
 
   useEffect(() => {
-    let mounted = true;
-    const arr = children.filter((data) => data.props.children.length > 0);
-
-    if (mounted) setActiveTab(arr[0].props.label);
-
-    return () => {
-      mounted = false;
-    };
+    const nonEmptyTabs = data.filter((item) => item.props.children.length > 0);
+    setActiveTab(nonEmptyTabs[0].props.label);
   }, []);
 
   return (
     <div className="tabs-wrapper">
       <div className="tabs">
         <ol className="tab-list">
-          {children.map((child) => {
-            const { label } = child.props;
-            const contacts = child.props.children;
+          {data.map((child) => {
+            // children here implies the contacts for a given label
+            const { label, children } = child.props;
 
             return (
               <Tab
@@ -35,14 +29,14 @@ const Tabs = ({ children }) => {
                 key={label}
                 label={label}
                 onClick={onClickTabItem}
-                disabled={contacts.length === 0}
-                count={contacts.length}
+                disabled={children.length === 0}
+                count={children.length}
               />
             );
           })}
         </ol>
         <div className="tab-content">
-          {children.map((child) => {
+          {data.map((child) => {
             const { label } = child.props;
             const contacts = child.props.children;
             if (child.props.label !== activeTab) return undefined;
