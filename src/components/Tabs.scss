@@ -1,0 +1,125 @@
+.tabs-wrapper {
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+
+  .tabs {
+    background-color: #f2f2f2;
+    display: flex;
+    padding: 20px 10px;
+
+    .tab-content {
+      height: 400px;
+    }
+  }
+}
+
+.tab-list {
+  height: 400px;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+}
+
+.tab-list-item {
+  border: 1px;
+  font-weight: 600;
+  list-style: none;
+  margin: 0 10px 0 0;
+  padding: 0.3rem;
+  text-align: center;
+  transition: all ease-in 0.3s;
+  -webkit-transition: all ease-in 0.3s;
+  -moz-transition: all ease-in 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #e5e5e5;
+  }
+}
+
+.tab-list-active {
+  color: #0069ff;
+  font-weight: 900;
+}
+
+.tab-list-item.disabled {
+  pointer-events: none;
+  color: #99a1b3;
+}
+
+@media screen and (max-width: 380px) and (max-height: 540px) {
+  .tabs-wrapper {
+    .tabs {
+      .tab-content {
+        .content-wrapper {
+          .right {
+            height: 40vh !important;
+            .contact-info {
+              padding: 10px !important;
+
+              .contact-details {
+                font-size: 12px;
+              }
+            }
+          }
+          .left {
+            font-size: 12px;
+            height: 60vh !important;
+            h2 {
+              height: 20px;
+              line-height: 20px;
+            }
+            .contacts-container {
+              height: 56vh !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .tab-list {
+    height: auto;
+  }
+
+  .tabs-wrapper {
+    align-items: flex-start;
+
+    .tabs {
+      height: 100%;
+      width: 100%;
+      padding: 10px;
+
+      .tab-content {
+        height: 100%;
+        width: 100%;
+
+        .content-wrapper {
+          height: 100%;
+
+          .left {
+            height: 75vh;
+
+            h2 {
+              text-align: left;
+              margin-left: 20px;
+            }
+
+            .contacts-container {
+              height: 68vh;
+              width: 100%;
+            }
+          }
+
+          .right {
+            height: 25vh;
+          }
+        }
+      }
+    }
+  }
+}
