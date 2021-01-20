@@ -1,5 +1,10 @@
 import config from '../config';
 
+/**
+ * formats the api response into a format more suitble for the app
+ * @param   {array} contacts - Raw api response
+ * @return  {array} - Formatted array
+ */
 const formatContactData = (contacts) => {
   if (contacts.length === 0) return [];
 

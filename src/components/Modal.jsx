@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 import './Modal.scss';
 
+/**
+ * Component for showing deatils for a selected contact.
+ *
+ * @component
+ */
 const Modal = (props) => {
   const { close, children } = props;
 
@@ -22,7 +27,13 @@ const Modal = (props) => {
 };
 
 Modal.propTypes = {
+  /**
+  * content to display on modal
+  */
   children: PropTypes.element.isRequired,
+  /**
+  * function that cloases the modal
+  */
   close: PropTypes.func.isRequired,
 };
 

@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> components/Content.jsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Components</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="App.html">App</a></li><li><a href="ContactInfo.html">ContactInfo</a></li><li><a href="Content.html">Content</a></li><li><a href="Modal.html">Modal</a></li><li><a href="Tab.html">Tab</a></li><li><a href="Tabs.html">Tabs</a></li></ul><h3>Global</h3><ul><li><a href="global.html#formatContactData">formatContactData</a></li><li><a href="global.html#getContacts">getContacts</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>components/Content.jsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
+import './Content.scss';
+import Modal from './Modal';
+import ContactInfo from './ContactInfo';
+
+/**
+ * Component for showing deatils for a selected contact.
+ *
+ * @component
+ */
+const Content = ({ contacts }) => {
+  const [contact, setContact] = useState({});
+  const [show, setShow] = useState(false);
+
+  const handleClick = (selectedContact) => {
+    setContact(selectedContact);
+    if (!show &amp;&amp; (contact !== selectedContact)) {
+      setShow(!show);
+    }
+  };
+
+  const onClose = () => {
+    setShow(false);
+    setContact({});
+  };
+
+  const renderContacts = contacts.map((person, idx) => {
+    const classes = person === contact
+      ? 'contact-list__contact contact-list__contact--active'
+      : 'contact-list__contact';
+    return (
+      // eslint-disable-next-line react/no-array-index-key
+      &lt;div key={idx} className="column contact-list__column">
+        &lt;div className={classes} onClick={() => { handleClick(person); }} aria-hidden="true">
+          &lt;span className="contact-list__name">
+            {person.name.first}
+            {', '}
+            &lt;span className="contact-list__last">{person.name.last}&lt;/span>
+          &lt;/span>
+        &lt;/div>
+      &lt;/div>
+    );
+  });
+
+  return (
+    &lt;div className="contact-list">
+      {show &amp;&amp; (
+        &lt;Modal close={onClose} contact={contact}>
+          &lt;ContactInfo contact={contact} />
+        &lt;/Modal>
+      )}
+      &lt;div className="contact-list__container">
+        &lt;div className="row contact-list__row">
+          {renderContacts}
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  );
+};
+Content.propTypes = {
+  /**
+  * Array of contacts
+  */
+  contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+export default Content;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

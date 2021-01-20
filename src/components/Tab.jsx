@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 import './Tab.scss';
 
+/**
+ * Component for showing details of the user.
+ *
+ * @component
+ */
 const Tab = (props) => {
   const {
     activeTab,
@@ -31,10 +36,25 @@ const Tab = (props) => {
   );
 };
 Tab.propTypes = {
+  /**
+  * Current selected tab
+  */
   activeTab: PropTypes.string.isRequired,
+  /**
+  *  The tab label
+  */
   label: PropTypes.string.isRequired,
+  /**
+  * Currently selected tab
+  */
   onClick: PropTypes.func.isRequired,
+  /**
+  * Specifies if the tab is disabled
+  */
   disabled: PropTypes.bool.isRequired,
+  /**
+  * The number of contacts on a given tab
+  */
   count: PropTypes.number.isRequired,
 };
 

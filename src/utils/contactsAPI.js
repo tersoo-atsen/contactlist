@@ -5,6 +5,11 @@ const api = `${config.userUrl}`;
 const count = config.numberCards;
 const apiOptions = `?results=${count}&exc=gender,registered,dob,cell,timezone,nat,id&nat=au,us,dk,fr,gb`;
 const headers = { Accept: 'application/json' };
+
+/**
+ * return a formatted array of tags and contacts
+ * @return  {array} - Array of tags and contacts
+ */
 const getContacts = async () => {
   try {
     const response = await fetch(`${api}/${apiOptions}`, { method: 'GET', headers });

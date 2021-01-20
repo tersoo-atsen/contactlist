@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 import './ContactInfo.scss';
 
+/**
+ * Component for showing details of the contact.
+ *
+ * @component
+ */
 const ContactInfo = (props) => {
   const { contact } = props;
 
@@ -73,6 +78,9 @@ const ContactInfo = (props) => {
 };
 
 ContactInfo.propTypes = {
+  /**
+  * Object with contact detail
+  */
   contact: PropTypes.shape({
     name: PropTypes.objectOf(PropTypes.string),
     email: PropTypes.string,

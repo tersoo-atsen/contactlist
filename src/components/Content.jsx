@@ -5,6 +5,11 @@ import './Content.scss';
 import Modal from './Modal';
 import ContactInfo from './ContactInfo';
 
+/**
+ * Component for showing deatils for a selected contact.
+ *
+ * @component
+ */
 const Content = ({ contacts }) => {
   const [contact, setContact] = useState({});
   const [show, setShow] = useState(false);
@@ -55,6 +60,9 @@ const Content = ({ contacts }) => {
   );
 };
 Content.propTypes = {
+  /**
+  * Array of contacts
+  */
   contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

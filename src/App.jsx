@@ -5,6 +5,11 @@ import './App.scss';
 import getContacts from './utils/contactsAPI';
 import Tabs from './components/Tabs';
 
+/**
+ * Container for all other components
+ *
+ * @component
+ */
 const App = () => {
   const [dataArray, setDataArray] = useState([]);
   const [loading, setLoading] = useState(true);

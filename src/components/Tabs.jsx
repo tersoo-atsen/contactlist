@@ -5,6 +5,11 @@ import './Tabs.scss';
 import Tab from './Tab';
 import Content from './Content';
 
+/**
+ * Component for showing details of the contact.
+ *
+ * @component
+ */
 const Tabs = ({ children: data }) => {
   const [activeTab, setActiveTab] = useState('');
 
@@ -53,6 +58,9 @@ const Tabs = ({ children: data }) => {
 };
 
 Tabs.propTypes = {
+  /**
+  * Array of tabs and contacts
+  */
   children: PropTypes.instanceOf(Array).isRequired,
 };
 
