@@ -16,8 +16,7 @@
     "destination": "docs/",
     "recurse": true,
     "verbose": true,
-    "template": "./node_modules/better-docs",
-    "readme": "README.md"
+    "template": "./node_modules/better-docs"
   },
   "templates": {
     "better-docs": {
