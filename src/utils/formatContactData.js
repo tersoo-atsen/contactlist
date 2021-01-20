@@ -7,7 +7,7 @@ const formatContactData = (contacts) => {
     contacts.reduce((acc, contact) => {
       const firstLetter = contact.name.last[0].toLocaleLowerCase();
       if (!acc[firstLetter]) {
-        acc[firstLetter] = { title: firstLetter, data: [contact] };
+        acc[firstLetter] = { tab: firstLetter, data: [contact] };
       } else {
         acc[firstLetter].data.push(contact);
       }
@@ -16,9 +16,9 @@ const formatContactData = (contacts) => {
   );
 
   config.tabs.map((tab) => {
-    const titles = formattedContacts.map((item) => item.title);
+    const titles = formattedContacts.map((item) => item.tab);
     if (!titles.includes(tab.toLocaleLowerCase())) {
-      formattedContacts.push({ title: tab, data: [] });
+      formattedContacts.push({ tab, data: [] });
     }
     return tab;
   });
@@ -28,7 +28,7 @@ const formatContactData = (contacts) => {
     return item;
   });
 
-  return formattedContacts.sort((a, b) => (a.title > b.title ? 1 : -1));
+  return formattedContacts.sort((a, b) => (a.tab > b.tab ? 1 : -1));
 };
 
 export default formatContactData;

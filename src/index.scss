@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito:weight@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato:weight@400;700&display=swap");
 
 * {
   margin: 0;
@@ -22,10 +22,29 @@ body,
 }
 
 body {
-  font-family: "Nunito", sans-serif;
-  color: #141414;
+  font-family: "Lato", sans-serif;
+  color: #022B69;
+  -webkit-font-smoothing: antialiased;
 }
 
 .bold {
   font-weight: bold;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
 }

@@ -6,18 +6,18 @@ import getContacts from './utils/contactsAPI';
 import Tabs from './components/Tabs';
 
 const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [dataArray, setDataArray] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     (async () => {
       const response = await getContacts();
-      if (response.error) {
+      if (response === null) {
         setError('Something went wrong, please try again.');
         setLoading(false);
       } else {
-        setContacts(response);
+        setDataArray(response);
         setLoading(false);
       }
     })();
@@ -28,10 +28,10 @@ const App = () => {
       {error && <div className="error">{error}</div>}
       {loading
         ? <p className="loader">Loading...</p>
-        : (contacts.length > 0 && (
+        : (dataArray.length > 0 && (
           <Tabs>
-            {contacts.map((item) => (
-              <div key={item.title} label={item.title}>
+            {dataArray.map((item) => (
+              <div key={item.tab} label={item.tab}>
                 {item.data}
               </div>
             ))}

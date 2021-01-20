@@ -1,4 +1,16 @@
+# OSX
 .DS_STORE
+
+# npm
 node_modules
 build/
+dist/
+
+# logs
+*.log
+
+# ides
 .vscode
+
+# testing
+coverage/

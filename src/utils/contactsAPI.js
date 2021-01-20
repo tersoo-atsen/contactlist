@@ -11,7 +11,7 @@ const getContacts = async () => {
     const data = await response.json();
     return formatContactData(data.results);
   } catch (error) {
-    return { error };
+    return null;
   }
 };
 export default getContacts;

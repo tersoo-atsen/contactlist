@@ -15,33 +15,37 @@ const Tabs = ({ children: data }) => {
     setActiveTab(nonEmptyTabs[0].props.label);
   }, []);
 
-  return (
-    <div className="tabs-wrapper">
-      <div className="tabs">
-        <ol className="tab-list">
-          {data.map((child) => {
-            // children here implies the contacts for a given label
-            const { label, children } = child.props;
+  const renderTabs = data.map((child) => {
+    // children here implies the contacts for a given label
+    const { label, children } = child.props;
 
-            return (
-              <Tab
-                activeTab={activeTab}
-                key={label}
-                label={label}
-                onClick={onClickTabItem}
-                disabled={children.length === 0}
-                count={children.length}
-              />
-            );
-          })}
+    return (
+      <Tab
+        activeTab={activeTab}
+        key={label}
+        label={label}
+        onClick={onClickTabItem}
+        disabled={children.length === 0}
+        count={children.length}
+      />
+    );
+  });
+
+  const renderContent = data.map((child) => {
+    const { label, children } = child.props;
+    if (child.props.label !== activeTab) return undefined;
+    return <Content key={label} contacts={children} />;
+  });
+
+  return (
+    <div className="tab-menu">
+      <h2 className="tab-menu__title">Contacts</h2>
+      <div className="tab-menu__container">
+        <ol className="tab-menu__list">
+          {renderTabs}
         </ol>
-        <div className="tab-content">
-          {data.map((child) => {
-            const { label } = child.props;
-            const contacts = child.props.children;
-            if (child.props.label !== activeTab) return undefined;
-            return <Content key={label} contacts={contacts} />;
-          })}
+        <div className="tab__content">
+          {renderContent}
         </div>
       </div>
     </div>

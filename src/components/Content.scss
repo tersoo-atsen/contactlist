@@ -1,125 +1,52 @@
-.content-wrapper {
+$primaryColour: #0069ff;
+
+.contact-list {
   display: flex;
+  padding: 20px 50px;
+  position: relative;
+  height: 100%;
 }
 
-.left {
-  h2 {
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-  }
+.contact-list__container {
+  width: 100%;
 }
 
-.contacts-container {
-  height: 340px;
-  width: 200px;
-  overflow-y: scroll;
+.contact-list__row {
+  width: 100%;
   font-size: 14px;
-
-  .contact {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    transition: all ease-in 0.3s;
-    -webkit-transition: all ease-in 0.3s;
-    -moz-transition: all ease-in 0.3s;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #e5e5e5;
-    }
-
-    .image {
-      height: 60px;
-      width: 60px;
-      min-width: 60px;
-      border-radius: 50%;
-      background-position: -10px 0px;
-      background-size: cover;
-    }
-
-    .name {
-      margin-left: 10px;
-      min-width: 50px;
-      
-      .last {
-        text-transform: uppercase;
-      }
-    }
-  }
-
-  .active.contact {
-    color: #0069ff;
-  }
 }
 
-
-.contact-info {
+.contact-list__contact {
+  height: 40px;
   display: flex;
-  flex-direction: column;
-  height: 400px;
-  width: 300px;
-  padding: 20px;
+  align-items: center;
+  padding: 8px;
+  float: left;
+  display: inline;
+  transition: all ease-in 0.3s;
+  -webkit-transition: all ease-in 0.3s;
+  -moz-transition: all ease-in 0.3s;
 
-  .avatar-wrapper {
-    margin: 10px 0;
-    height: 150px;
-    width: 150px;
-
-    .avatar {
-      display: inline-block;
-      height: 100%;
-      width: 100%;
-      background-color: #ffffff80;
-      border-radius: 10px;
-      box-sizing: border-box;
-      color: #001c00;
-      font-size: 50px;
-    }
-  }
-
-  .contact-details {
-    font-size: 14px;
-
-    .name {
-      margin: 20px 0 10px;
-      color: #99a1b3;
-    }
+  &:hover {
+    cursor: pointer;
+    color: $primaryColour;
   }
 }
 
-@media screen and (max-width: 540px) {
-  .content-wrapper {
-    flex-direction: column;
-  }
+.contact-list__contact--active {
+  color: $primaryColour;
+}
 
-  .left {
-    order: 2;
-  }
+.contact-list__name {
+  min-width: 50px;
+}
 
-  .right {
-    order: 1;
-  }
+.contact-list__last {
+  text-transform: uppercase;
+}
 
-  .contact-info {
-    flex-direction: row;
-    width: 100%;
-    padding: 20px 10px;
-    height: auto;
-
-    .contact-details {
-      margin-left: 20px;
-
-      .name {
-        margin-top: 0;
-      }
-    }
-
-    .avatar-wrapper {
-      margin: 0;
-      height: 80px;
-      width: 80px;
-    }
+@media screen and (max-width: 768px) {
+  .contact-list {
+    padding: 20px;
   }
 }

@@ -28,7 +28,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Contact List',
-      template: path.resolve(__dirname, './src/index.html'),
+      template: path.resolve(__dirname, './public/index.html'),
     }),
   ],
   devServer: {

@@ -16,8 +16,8 @@ const Tab = (props) => {
 
   let className = 'tab-list-item';
 
-  if (activeTab === label) className += ' tab-list-active';
-  if (disabled) className += ' disabled';
+  if (activeTab === label) className += ' tab-list-item--active';
+  if (disabled) className += ' tab-list-item--disabled';
 
   return (
     <li
@@ -25,8 +25,8 @@ const Tab = (props) => {
       onClick={!disabled ? handleClick : null}
       aria-hidden="true"
     >
-      <span className="label">{label}</span>
-      <span className="count">{`[${count}]`}</span>
+      <span className="tab-list-item__label">{label}</span>
+      <span className="tab-list-item__count">{`[${count}]`}</span>
     </li>
   );
 };

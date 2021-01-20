@@ -2,35 +2,54 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import './Content.scss';
+import Modal from './Modal';
 import ContactInfo from './ContactInfo';
 
 const Content = ({ contacts }) => {
-  const [contact, setContact] = useState(contacts[0]);
+  const [contact, setContact] = useState({});
+  const [show, setShow] = useState(false);
 
-  const handleClick = (selectedContact) => setContact(selectedContact);
+  const handleClick = (selectedContact) => {
+    setContact(selectedContact);
+    if (!show && (contact !== selectedContact)) {
+      setShow(!show);
+    }
+  };
 
-  return (
-    <div className="content-wrapper">
-      <div className="left">
-        <h2>Contacts</h2>
-        <div className="contacts-container">
-          {contacts.map((person, idx) => {
-            const classes = person === contact ? 'active contact' : 'contact';
-            return (
-              // eslint-disable-next-line react/no-array-index-key
-              <div key={idx} className={classes} onClick={() => { handleClick(person); }} aria-hidden="true">
-                <span className="name">
-                  {person.name.first}
-                  {', '}
-                  <span className="last">{person.name.last}</span>
-                </span>
-              </div>
-            );
-          })}
+  const onClose = () => {
+    setShow(false);
+    setContact({});
+  };
+
+  const renderContacts = contacts.map((person, idx) => {
+    const classes = person === contact
+      ? 'contact-list__contact contact-list__contact--active'
+      : 'contact-list__contact';
+    return (
+      // eslint-disable-next-line react/no-array-index-key
+      <div key={idx} className="column contact-list__column">
+        <div className={classes} onClick={() => { handleClick(person); }} aria-hidden="true">
+          <span className="contact-list__name">
+            {person.name.first}
+            {', '}
+            <span className="contact-list__last">{person.name.last}</span>
+          </span>
         </div>
       </div>
-      <div className="right">
-        <ContactInfo contact={contact} />
+    );
+  });
+
+  return (
+    <div className="contact-list">
+      {show && (
+        <Modal close={onClose} contact={contact}>
+          <ContactInfo contact={contact} />
+        </Modal>
+      )}
+      <div className="contact-list__container">
+        <div className="row contact-list__row">
+          {renderContacts}
+        </div>
       </div>
     </div>
   );

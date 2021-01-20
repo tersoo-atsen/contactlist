@@ -1,52 +1,72 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './ContactInfo.scss';
+
 const ContactInfo = (props) => {
   const { contact } = props;
 
   return (
     <div className="contact-info">
-      <div className="avatar-wrapper">
-        <img className="avatar" src={contact.picture.large} alt="Avatar" />
+      <div className="contact-info__image-wrapper">
+        <img className="contact-info__image" src={contact.picture.large} alt="Avatar" />
       </div>
-      <div className="contact-details">
-        <h3 className="name">
+      <div className="contact-info__details">
+        <h3 className="contact-info__name">
           <span>{contact.name.first}</span>
           {' '}
           <span>{contact.name.last}</span>
         </h3>
-        <p className="email">
-          <span className="bold">Email:</span>
-          {' '}
-          {contact.email}
-        </p>
-        <p className="phone">
-          <span className="bold">Phone:</span>
-          {' '}
-          {contact.phone}
-        </p>
-        <p className="street">
-          <span className="bold">Street:</span>
-          {' '}
-          {contact.location.street.number}
-          {' '}
-          {contact.location.street.name}
-        </p>
-        <p className="city">
-          <span className="bold">City:</span>
-          {' '}
-          {contact.location.city}
-        </p>
-        <p className="state">
-          <span className="bold">State:</span>
-          {' '}
-          {contact.location.state}
-        </p>
-        <p className="postcode">
-          <span className="bold">Postcode:</span>
-          {' '}
-          {contact.location.postcode}
-        </p>
+        <div className="row contact-info__row">
+          <div className="column contact-info__column">
+            <p className="email">
+              <span className="bold">Email:</span>
+              {' '}
+              {contact.email}
+            </p>
+          </div>
+          <div className="column contact-info__column">
+            <p className="phone">
+              <span className="bold">Phone:</span>
+              {' '}
+              {contact.phone}
+            </p>
+          </div>
+        </div>
+        <div className="row">
+          <div className="column contact-info__column">
+            <p className="street">
+              <span className="bold">Street:</span>
+              {' '}
+              {contact.location.street.number}
+              {' '}
+              {contact.location.street.name}
+            </p>
+          </div>
+          <div className="column contact-info__column">
+            <p className="city">
+              <span className="bold">City:</span>
+              {' '}
+              {contact.location.city}
+            </p>
+          </div>
+        </div>
+        <div className="row">
+          <div className="column contact-info__column">
+            <p className="state">
+              <span className="bold">State:</span>
+              {' '}
+              {contact.location.state}
+            </p>
+          </div>
+          <div className="column contact-info__column">
+            <p className="postcode">
+              <span className="bold">Postcode:</span>
+              {' '}
+              {contact.location.postcode}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
