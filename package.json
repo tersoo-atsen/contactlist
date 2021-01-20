@@ -8,7 +8,7 @@
     "build": "webpack --config ./webpack.config.js --mode production",
     "start": "webpack serve --config ./webpack.config.js --mode development",
     "test": "jest --config jest.config.js --coverage -u",
-    "docs": "jsdoc -c ./jsdoc.json"
+    "docs": "jsdoc -c ./jsdoc.json -r ./docs/index.md"
   },
   "keywords": [],
   "author": "",
